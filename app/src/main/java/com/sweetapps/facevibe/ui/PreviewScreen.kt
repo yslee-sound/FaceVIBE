@@ -1,4 +1,4 @@
-package com.sweetapps.facembti.ui
+package com.sweetapps.facevibe.ui
 
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
@@ -85,7 +85,7 @@ fun PreviewScreen(
 
             Spacer(Modifier.height(24.dp))
 
-            // 하단 버튼: MBTI 분석으로 이동
+            // 하단 버튼: VIBE 분석으로 이동
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -100,7 +100,7 @@ fun PreviewScreen(
                         .height(54.dp)
                         .align(Alignment.Center)
                 ) {
-                    Text(text = "MBTI", fontSize = 18.sp, color = Color.White)
+                    Text(text = "VIBE", fontSize = 18.sp, color = Color.White)
                 }
             }
         }

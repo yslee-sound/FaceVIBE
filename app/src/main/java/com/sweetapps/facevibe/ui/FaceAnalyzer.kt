@@ -1,4 +1,4 @@
-package com.sweetapps.facembti.ui
+package com.sweetapps.facevibe.ui
 
 import android.annotation.SuppressLint
 import android.graphics.RectF
@@ -10,7 +10,6 @@ import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetector
 import com.google.mlkit.vision.face.FaceDetectorOptions
 import com.google.mlkit.vision.face.FaceLandmark
-import kotlin.math.sqrt
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** 간단한 얼굴 메트릭 */

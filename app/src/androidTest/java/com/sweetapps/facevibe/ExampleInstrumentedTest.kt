@@ -1,4 +1,4 @@
-package com.sweetapps.facembti
+package com.sweetapps.facevibe
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.sweetapps.facembti", appContext.packageName)
+        assertEquals("com.sweetapps.facevibe", appContext.packageName)
     }
 }

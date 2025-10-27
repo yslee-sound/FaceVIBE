@@ -1,4 +1,4 @@
-package com.sweetapps.facembti.ui
+package com.sweetapps.facevibe.ui
 
 import android.Manifest
 import android.graphics.BitmapFactory

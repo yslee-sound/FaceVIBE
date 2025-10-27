@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.sweetapps.facembti"
+    namespace = "com.sweetapps.facevibe"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.sweetapps.facembti"
+        applicationId = "com.sweetapps.facevibe"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

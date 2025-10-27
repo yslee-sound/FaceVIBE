@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FaceMBTI"
+rootProject.name = "FaceVIBE"
 include(":app")
  

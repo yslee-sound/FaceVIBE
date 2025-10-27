@@ -1,4 +1,4 @@
-package com.sweetapps.facembti.ui.theme
+package com.sweetapps.facevibe.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

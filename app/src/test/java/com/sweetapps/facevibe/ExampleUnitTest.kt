@@ -1,4 +1,4 @@
-package com.sweetapps.facembti
+package com.sweetapps.facevibe
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.sweetapps.facembti.ui
+package com.sweetapps.facevibe.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -28,7 +28,7 @@ import java.io.File
 @Composable
 fun AnalyzingScreen(
     imagePath: String,
-    onFinished: (MbtiResult) -> Unit,
+    onFinished: (VibeResult) -> Unit,
     onBack: () -> Unit
 ) {
     var progress by remember { mutableFloatStateOf(0.05f) }
@@ -44,7 +44,7 @@ fun AnalyzingScreen(
             elapsed += step
             progress = (elapsed.toFloat() / total).coerceIn(0f, 1f)
         }
-        val result = analyzeMbti(file)
+        val result = analyzeVibe(file)
         onFinished(result)
     }
 
@@ -109,7 +109,7 @@ fun AnalyzingScreen(
                     )
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        text = "MBTI 유형이 16가지나 있다는 사실을 알고 계셨나요?",
+                        text = "VIBE 유형이 16가지나 있다는 사실을 알고 계셨나요?",
                         color = Color(0x668FA3B5),
                         fontSize = 13.sp,
                         textAlign = TextAlign.Center

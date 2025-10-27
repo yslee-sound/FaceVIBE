@@ -1,6 +1,5 @@
-package com.sweetapps.facembti.ui
+package com.sweetapps.facevibe.ui
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -12,7 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -34,7 +32,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
-import java.io.File
 
 // 추가 import
 import android.Manifest
@@ -101,7 +98,7 @@ fun ResultScreen(
         val cache = SaveUtils.saveBitmapToCachePng(ctx, shot)
         val intent = Intent(Intent.ACTION_SEND).apply {
             setType("image/png")
-            putExtra(Intent.EXTRA_TEXT, "나의 얼굴 MBTI 결과는 ${type} (${score}%)\n#FaceMBTI")
+            putExtra(Intent.EXTRA_TEXT, "나의 얼굴 VIBE 결과는 ${type} (${score}%)\n#FaceVIBE")
             val uri: Uri = FileProvider.getUriForFile(ctx, ctx.packageName + ".provider", cache)
             putExtra(Intent.EXTRA_STREAM, uri)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -154,7 +151,7 @@ fun ResultScreen(
 
             Spacer(Modifier.height(16.dp))
 
-            // MBTI 카드
+            // VIBE 카드
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -177,7 +174,7 @@ fun ResultScreen(
                         .fillMaxWidth()
                 ) {
                     Column {
-                        Text(text = "당신의 MBTI 유형은?", color = Color.White.copy(alpha = 0.85f), fontSize = 14.sp)
+                        Text(text = "당신의 VIBE 유형은?", color = Color.White.copy(alpha = 0.85f), fontSize = 14.sp)
                         Spacer(Modifier.height(8.dp))
                         Text(text = type, color = Color.White, fontSize = 42.sp)
                     }

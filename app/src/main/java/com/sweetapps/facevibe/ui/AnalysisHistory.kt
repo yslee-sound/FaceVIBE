@@ -1,4 +1,4 @@
-package com.sweetapps.facembti.ui
+package com.sweetapps.facevibe.ui
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -7,12 +7,12 @@ import java.io.File
 /**
  * 단일 분석 기록을 나타내는 데이터 클래스.
  * @param imagePath 분석된 이미지의 로컬 파일 경로.
- * @param result 분석 결과(MBTI 유형 및 점수).
+ * @param result 분석 결과(VIBE 유형 및 점수).
  * @param timestamp 분석이 완료된 시간.
  */
 data class AnalysisRecord(
     val imagePath: String,
-    val result: MbtiResult,
+    val result: VibeResult,
     val timestamp: Long = System.currentTimeMillis()
 )
 
@@ -33,7 +33,7 @@ object AnalysisHistoryRepository {
      * @param file 분석된 이미지 파일.
      * @param result 분석 결과.
      */
-    fun add(file: File, result: MbtiResult) {
+    fun add(file: File, result: VibeResult) {
         val newRecord = AnalysisRecord(imagePath = file.absolutePath, result = result)
         val updatedList = (listOf(newRecord) + _history.value).take(MAX_HISTORY_SIZE)
         _history.value = updatedList
