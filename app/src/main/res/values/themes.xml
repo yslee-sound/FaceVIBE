@@ -2,4 +2,15 @@
 <resources>
 
     <style name="Theme.FaceVIBE" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- 스플래시 배경색 -->
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <!-- 스플래시 아이콘 (SVG 변환 후 여기를 변경하세요) -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <!-- 아이콘 배경색 (선택사항) -->
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_background</item>
+        <!-- 앱 시작 후 테마 -->
+        <item name="postSplashScreenTheme">@style/Theme.FaceVIBE</item>
+    </style>
 </resources>
