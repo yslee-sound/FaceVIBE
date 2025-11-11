@@ -96,14 +96,14 @@ fun CameraMainScreen(
         )
     }
 
-    Surface(modifier = modifier.fillMaxSize(), color = Color(0xFF0F121A)) {
+    Surface(modifier = modifier.fillMaxSize(), color = Color.White) {
         Column(modifier = Modifier.fillMaxSize()) {
             // 카메라 프리뷰 (상단바 등 겹침 방지용 패딩 포함)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .background(Color.Black)
+                    .background(Color(0xFFF8F8F8))
                     .padding(top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding())
             ) {
                 if (hasCameraPermission) {
@@ -119,7 +119,7 @@ fun CameraMainScreen(
                 } else {
                     Text(
                         text = "카메라 권한이 필요합니다",
-                        color = Color.White,
+                        color = Color.Black,
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
@@ -134,7 +134,7 @@ fun CameraMainScreen(
                 }
                 Surface(
                     onClick = { showGuide = !showGuide },
-                    color = Color(0x66000000),
+                    color = Color(0x55FFFFFF), // 연한 버튼 배경 (흰 배경 위에서 보이도록)
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -142,7 +142,7 @@ fun CameraMainScreen(
                 ) {
                     Text(
                         text = if (showGuide) "가이드 끄기" else "가이드 켜기",
-                        color = Color.White,
+                        color = Color.Black,
                         fontSize = 12.sp,
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
                     )
@@ -153,11 +153,11 @@ fun CameraMainScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFF10131B))
+                    .background(Color.White)
                     .padding(horizontal = 16.dp)
             ) {
                 Spacer(Modifier.height(12.dp))
-                Text(text = "최근 분석", color = Color(0xFFCAD2DC), fontSize = 14.sp)
+                Text(text = "최근 분석", color = Color.DarkGray, fontSize = 14.sp)
                 Spacer(Modifier.height(8.dp))
 
                 Row(
@@ -174,7 +174,7 @@ fun CameraMainScreen(
                             modifier = Modifier
                                 .size(56.dp)
                                 .clip(RoundedCornerShape(12.dp))
-                                .background(Color(0xFF2A313A))
+                                .background(Color(0xFFF0F0F0))
                                 .clickable { onHistoryClick(record) }
                                 .padding(0.dp),
                             contentAlignment = Alignment.Center
@@ -183,7 +183,7 @@ fun CameraMainScreen(
                                 Image(bitmap = img, contentDescription = null)
                             }
                             // 타입 라벨(간단한 텍스트 오버레이)
-                            Text(text = record.result.type, color = Color.White, fontSize = 12.sp)
+                            Text(text = record.result.type, color = Color.Black, fontSize = 12.sp)
                         }
                         Spacer(Modifier.width(10.dp))
                     }
@@ -200,7 +200,7 @@ fun CameraMainScreen(
                         .padding(bottom = WindowInsets.safeDrawing.asPaddingValues().calculateBottomPadding() + 12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = "촬영", color = Color(0xFFCAD2DC))
+                    Text(text = "촬영", color = Color.DarkGray)
                     Spacer(Modifier.height(8.dp))
 
                     // 가운데 촬영 버튼만 표시
@@ -237,7 +237,7 @@ private fun FaceGuideOverlay(modifier: Modifier = Modifier) {
         val top = (h - ovalH) / 2f
         // 타원 테두리
         drawOval(
-            color = Color.White.copy(alpha = 0.75f),
+            color = Color.Black.copy(alpha = 0.75f),
             topLeft = Offset(left, top),
             size = Size(ovalW, ovalH),
             style = Stroke(width = 3.dp.toPx())
@@ -245,7 +245,7 @@ private fun FaceGuideOverlay(modifier: Modifier = Modifier) {
         // 눈 높이 가이드 (타원 상단에서 0.4 비율 지점)
         val eyeY = top + ovalH * 0.4f
         drawLine(
-            color = Color.White.copy(alpha = 0.35f),
+            color = Color.Black.copy(alpha = 0.35f),
             start = Offset(left + 20.dp.toPx(), eyeY),
             end = Offset(left + ovalW - 20.dp.toPx(), eyeY),
             strokeWidth = 2.dp.toPx()
@@ -253,7 +253,7 @@ private fun FaceGuideOverlay(modifier: Modifier = Modifier) {
         // 수직 중심선
         val cx = w / 2f
         drawLine(
-            color = Color.White.copy(alpha = 0.25f),
+            color = Color.Black.copy(alpha = 0.25f),
             start = Offset(cx, top + 12.dp.toPx()),
             end = Offset(cx, top + ovalH - 12.dp.toPx()),
             strokeWidth = 1.5.dp.toPx()
@@ -266,31 +266,31 @@ private fun FaceGuideOverlay(modifier: Modifier = Modifier) {
         val rectRight = left + ovalW + 24.dp.toPx()
         val rectBottom = top + ovalH + 24.dp.toPx()
         // 좌상
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectLeft, rectTop), Offset(rectLeft + corner, rectTop), stroke)
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectLeft, rectTop), Offset(rectLeft, rectTop + corner), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectLeft, rectTop), Offset(rectLeft + corner, rectTop), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectLeft, rectTop), Offset(rectLeft, rectTop + corner), stroke)
         // 우상
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectRight - corner, rectTop), Offset(rectRight, rectTop), stroke)
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectRight, rectTop), Offset(rectRight, rectTop + corner), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectRight - corner, rectTop), Offset(rectRight, rectTop), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectRight, rectTop), Offset(rectRight, rectTop + corner), stroke)
         // 좌하
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectLeft, rectBottom - corner), Offset(rectLeft, rectBottom), stroke)
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectLeft, rectBottom), Offset(rectLeft + corner, rectBottom), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectLeft, rectBottom - corner), Offset(rectLeft, rectBottom), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectLeft, rectBottom), Offset(rectLeft + corner, rectBottom), stroke)
         // 우하
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectRight, rectBottom - corner), Offset(rectRight, rectBottom), stroke)
-        drawLine(Color.White.copy(alpha = 0.4f), Offset(rectRight - corner, rectBottom), Offset(rectRight, rectBottom), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectRight, rectBottom - corner), Offset(rectRight, rectBottom), stroke)
+        drawLine(Color.Black.copy(alpha = 0.4f), Offset(rectRight - corner, rectBottom), Offset(rectRight, rectBottom), stroke)
     }
 }
 
 @Composable
 private fun FaceGuideTips(modifier: Modifier = Modifier) {
     Surface(
-        color = Color(0x66000000),
+        color = Color(0x55FFFFFF), // 연한 흰 오버레이
         shape = RoundedCornerShape(12.dp),
         modifier = modifier
     ) {
         Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "정면을 바라보고 타원 안에 얼굴을 맞춰주세요", color = Color.White, fontSize = 13.sp)
+            Text(text = "정면을 바라보고 타원 안에 얼굴을 맞춰주세요", color = Color.Black, fontSize = 13.sp)
             Spacer(Modifier.height(4.dp))
-            Text(text = "밝은 곳에서 배경 단순, 안경/모자는 벗어주세요", color = Color(0xFFCAD2DC), fontSize = 12.sp)
+            Text(text = "밝은 곳에서 배경 단순, 안경/모자는 벗어주세요", color = Color.DarkGray, fontSize = 12.sp)
         }
     }
 }

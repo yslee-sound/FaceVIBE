@@ -36,7 +36,7 @@ fun PreviewScreen(
         bmp = BitmapFactory.decodeFile(imagePath)?.asImageBitmap()
     }
 
-    Surface(color = Color(0xFF12131A)) {
+    Surface(color = Color.White) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -50,11 +50,11 @@ fun PreviewScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = onBack) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "뒤로", tint = Color.White)
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "뒤로", tint = Color.Black)
                 }
                 Text(
                     text = "미리보기",
-                    color = Color.White,
+                    color = Color.Black,
                     fontSize = 18.sp,
                     modifier = Modifier.padding(start = 6.dp)
                 )
@@ -67,7 +67,7 @@ fun PreviewScreen(
                     .padding(horizontal = 24.dp)
                     .height(360.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(Color(0xFF1C1E26)),
+                    .background(Color(0xFFF0F0F0)),
                 contentAlignment = Alignment.Center
             ) {
                 val localBmp = bmp
@@ -79,7 +79,7 @@ fun PreviewScreen(
                         modifier = Modifier.fillMaxSize()
                     )
                 } else {
-                    Text(text = "이미지 로딩 중", color = Color(0xFF8FA3B5))
+                    Text(text = "이미지 로딩 중", color = Color(0xFF6B6B6B))
                 }
             }
 

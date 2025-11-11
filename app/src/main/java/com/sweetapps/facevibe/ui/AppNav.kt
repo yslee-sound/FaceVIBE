@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import java.io.File
+import kotlin.random.Random
 
 @Composable
 fun AppNav() {
@@ -22,7 +23,8 @@ fun AppNav() {
                 },
                 onHistoryClick = { record ->
                     val encoded = Uri.encode(record.imagePath)
-                    nav.navigate("result?type=${record.result.type}&score=${record.result.score}&path=$encoded")
+                    // fortune 파라미터가 필요한 라우트에 기본값(-1)을 전달
+                    nav.navigate("result?type=${record.result.type}&score=${record.result.score}&path=$encoded&fortune=-1")
                 }
             )
         }
@@ -61,27 +63,33 @@ fun AppNav() {
                     val type = result.type
                     val score = result.score
                     val p = Uri.encode(decodedPath)
+                    val fortuneIndex = Random.nextInt(0, 12) // 랜덤 인덱스 생성 (0..11)
                     nav.popBackStack() // analyzing 제거
-                    nav.navigate("result?type=$type&score=$score&path=$p")
+                    nav.navigate("result?type=$type&score=$score&path=$p&fortune=$fortuneIndex")
                 },
                 onBack = { nav.popBackStack() }
             )
         }
         composable(
-            route = "result?type={type}&score={score}&path={path}",
+            route = "result?type={type}&score={score}&path={path}&fortune={fortune}",
             arguments = listOf(
                 navArgument("type") { type = NavType.StringType },
                 navArgument("score") { type = NavType.IntType },
-                navArgument("path") { type = NavType.StringType }
+                navArgument("path") { type = NavType.StringType },
+                // 정수형 NavType은 nullable을 사용하면 런타임 에러가 발생하므로 제거합니다.
+                navArgument("fortune") { type = NavType.IntType; defaultValue = -1 }
             )
         ) { backStackEntry ->
             val type = backStackEntry.arguments?.getString("type") ?: "INFP"
             val score = backStackEntry.arguments?.getInt("score") ?: 85
             val path = backStackEntry.arguments?.getString("path")
+            val fortuneArg = backStackEntry.arguments?.getInt("fortune") ?: -1
+            val fortuneIndex = if (fortuneArg >= 0) fortuneArg else null
             ResultScreen(
-                imagePath = path?.let { Uri.decode(it) },
-                type = type,
-                score = score,
+                path?.let { Uri.decode(it) },
+                type,
+                score,
+                fortuneIndex,
                 onBack = { nav.popBackStack() }
             )
         }

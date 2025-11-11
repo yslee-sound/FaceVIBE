@@ -28,15 +28,15 @@ app > build.gradle.kts
 
 - 드라이브 & 디렉터리 이동
 G:
-cd G:\Workspace\FaceMBTI
+cd G:\Workspace\FaceVIBE
 (확인)
 Get-ChildItem gradlew.bat
 파일 목록에 gradlew.bat 보이면 OK.
 
 - 서명 환경변수 (네 값으로 넣어, 따옴표 포함)
-$env:KEYSTORE_PATH="G:/secure/FaceMBTI/facembti-key.jks"
+$env:KEYSTORE_PATH="G:/secure/FaceVIBE/facevibe-key.jks"
 $env:KEYSTORE_STORE_PW="****"
-$env:KEY_ALIAS="facembti-alias"
+$env:KEY_ALIAS="facevibe-alias"
 $env:KEY_PASSWORD="****"
 
 - 서명 리포트 재확인 (선택이지만 3초)

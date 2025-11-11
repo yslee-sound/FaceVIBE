@@ -2,7 +2,7 @@ package com.sweetapps.facevibe.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -48,7 +48,7 @@ fun AnalyzingScreen(
         onFinished(result)
     }
 
-    Surface(color = Color(0xFF12131A)) {
+    Surface(color = Color.White) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -62,10 +62,10 @@ fun AnalyzingScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = onBack) {
-                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "뒤로", tint = Color.White)
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "뒤로", tint = Color.Black)
                 }
                 Spacer(Modifier.width(6.dp))
-                Text(text = "분석 중", color = Color.White, fontSize = 18.sp)
+                Text(text = "분석 중", color = Color.Black, fontSize = 18.sp)
             }
 
             Spacer(Modifier.height(6.dp))
@@ -91,7 +91,7 @@ fun AnalyzingScreen(
                         strokeWidth = 6.dp
                     )
                     Spacer(Modifier.height(28.dp))
-                    Text(text = "분석중...", color = Color(0xFFE6EAF2), fontSize = 20.sp, fontWeight = FontWeight.Medium)
+                    Text(text = "분석중...", color = Color.Black, fontSize = 20.sp, fontWeight = FontWeight.Medium)
                     Spacer(Modifier.height(18.dp))
                     androidx.compose.material3.LinearProgressIndicator(
                         progress = { progress },
@@ -104,13 +104,13 @@ fun AnalyzingScreen(
                     Spacer(Modifier.height(24.dp))
                     Text(
                         text = "얼굴을 분석하고 있습니다. 잠시만 기다려주세요.",
-                        color = Color(0xFFB3C0CC),
+                        color = Color.DarkGray,
                         textAlign = TextAlign.Center
                     )
                     Spacer(Modifier.height(8.dp))
                     Text(
                         text = "VIBE 유형이 16가지나 있다는 사실을 알고 계셨나요?",
-                        color = Color(0x668FA3B5),
+                        color = Color.Gray,
                         fontSize = 13.sp,
                         textAlign = TextAlign.Center
                     )
